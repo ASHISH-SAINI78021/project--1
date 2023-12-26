@@ -3,6 +3,7 @@ import TextField from '@mui/material/TextField';
 import { useState } from 'react';
 import Button from '@mui/material/Button';
 import styles from "./Footer.module.css"
+import { useParams } from 'react-router-dom';
 
 const Footer = ({Data}) => {
   const [row , setrow] = useState(1);
@@ -29,7 +30,8 @@ const Footer = ({Data}) => {
       text : data
     }
     console.log(data1);
-    const response = await fetch("http://localhost:8080/6584293fd618dae4698135c0" , {
+    const {id} = useParams();
+    const response = await fetch(`http://localhost:8080/${id}` , {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -47,7 +49,8 @@ const Footer = ({Data}) => {
     })
   }
   const buttonDelete = async()=> {
-      const response = await fetch("http://localhost:8080/6584293fd618dae4698135c0" , {
+      const {id} = useParams();
+      const response = await fetch(`http://localhost:8080/${id}` , {
         method : "DELETE"
       }).then((res)=> {
         console.log(res);

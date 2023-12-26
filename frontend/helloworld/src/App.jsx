@@ -1,4 +1,4 @@
-import {BrowserRouter , Routes , Route} from "react-router-dom"
+import {BrowserRouter , Routes , Route, Router} from "react-router-dom"
 import Navbar from './components/Navbar/Navbar'
 import Main from "./components/Main/Main"
 import '@fontsource/roboto/300.css';
@@ -10,6 +10,7 @@ import Footer from "./components/Footer/Footer";
 import Text from "./components/Text/Text";
 import All from "./components/All/All";
 import { useState } from "react";
+import Signup from "./components/Signup/Signup";
 
 function App() {
   const [data , setdata] = useState(null);
@@ -22,11 +23,12 @@ function App() {
       <BrowserRouter>
         <Navbar></Navbar>
         <Routes>
-            <Route exact path='/login' element={<Text/>}></Route>
+            <Route exact path='/signup' element={<Signup/>}></Route>
             <Route path="/:id" element={<Main Data={data}/>}></Route>
             <Route path="*" element={<All/>}></Route>
         </Routes>
         <Footer Data={setdata}></Footer>
+        
       </BrowserRouter>
     </div>
   )
